@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg bg-dark navbar-light sticky-top p-0">
+    <a href="/" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+        <h2 class="m-0 text-light "><i class="fa fa-car text-primary me-2"></i>Driving</h2>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <% if(userdata) { %>
+            <a href="/" class="nav-item nav-link">Dashboard</a>
+                <% } else { %>
+                <a href="/" class="nav-item nav-link">Home</a>
+                <% }%>
+
+            <% if(userdata) { %>
+                <% for(let permission of userPermissions) {%>
+                    <a href="<%= permission.href %>" class="nav-item nav-link"><%= permission.display %></a>
+                <% }%>
+            <a href="/logout" class="nav-item nav-link">Logout</a>
+            <% } else { %>
+            <a href="login" class="nav-item nav-link">Login</a>
+            <a href="signup" class="nav-item nav-link">Signup</a>
+            <% } %>
+            
+        </div>
+    </div>
+</nav>

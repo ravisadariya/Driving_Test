@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("layouts/header") %>
+
+  <body>
+    <!-- Navbar Start -->
+    <%- include("layouts/navbar") %>
+      <!-- Navbar End -->
+
+
+      <section class="page-section" id="personalData">
+        <div class="container">
+          <div class="text-center mt-4">
+            <h1 class="section-heading text-uppercase">Personal Information</h1>
+          </div>
+        </div>
+        <main class="container">
+          <section class="mx-sm-5 mb-5 pb-5">
+            <form class="row g-3 mt-3" method="post" action="">
+              <div class="col-md-4">
+                <label for="firstName" class="form-label text-dark fw-bold">First Name:</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter First Name"
+                  required />
+              </div>
+              <div class="col-md-4">
+                <label for="lastName" class="form-label text-dark fw-bold">Last name:</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter Last Name"
+                  required />
+              </div>
+              <div class="col-md-4">
+                <label for="licenseNumber" class="form-label text-dark fw-bold">License Number:</label>
+                <input placeholder="Enter License Number" type="text" class="form-control" id="licenseNumber"
+                  name="licenseNumber" maxlength="8" required />
+              </div>
+              <div class="col-md-6">
+                <label for="age" class="form-label text-dark fw-bold">Age:</label>
+                <input type="number" class="form-control" id="age" name="age" placeholder="Enter Age" required />
+              </div>
+              <div class="col-md-6">
+                <label for="dob" class="form-label text-dark fw-bold">DOB:</label>
+                <input type="date" class="form-control" id="dob" name="dob" placeholder="Enter DOB" required />
+              </div>
+
+              <div class="container">
+                <div class="text-center mt-4">
+                  <h1 class="section-heading text-uppercase">Car Information</h1>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="buildDate" class="form-label text-dark fw-bold">Make:</label>
+                <input type="text" class="form-control" id="make" name="make" placeholder="Enter Maker Name" required />
+              </div>
+              <div class="col-md-6">
+                <label for="model" class="form-label text-dark fw-bold">Model:</label>
+                <input type="text" class="form-control" id="model" name="model" placeholder="Enter Model" required />
+              </div>
+              <div class="col-md-6">
+                <label for="year" class="form-label text-dark fw-bold">Year:</label>
+                <input type="number" class="form-control" id="year" name="year" placeholder="Enter Year" required />
+              </div>
+              <div class="col-md-6">
+                <label for="plateNo" class="form-label text-dark fw-bold">Plate No:</label>
+                <input type="text" class="form-control" id="plateNo" name="plateNo" placeholder="Enter Plate Number"
+                  required />
+              </div>
+
+              <div class="container">
+                <div class="text-center mt-4">
+                  <h1 class="section-heading text-uppercase">Slots</h1>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <input type="date" class="form-control" id="date" name="date" placeholder="Date"
+                  onchange="loadTimeSlots()">
+              </div>
+              <div class="col-md-6">
+                <select name="time" id="time" class="form-select text-primary"></select>
+              </div>
+
+              <div class="col-12">
+                <button class="btn btn-primary text-dark" type="submit">Submit</button>
+              </div>
+            </form>
+          </section>
+        </main>
+      </section>
+
+      <!-- Footer Start -->
+      <%- include("layouts/footer") %>
+        <!-- Footer End -->
+
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+        <script>
+          function loadTimeSlots() {
+            var date = document.getElementById('date').value;
+            var timeSlotSelect = document.getElementById('time');
+
+            if (date) {
+              // Clear existing options
+              timeSlotSelect.innerHTML = '';
+
+              // AJAX call to backend to get time slots for the selected date
+              fetch('/getTimeSlots?date=' + date)
+                .then(response => response.json())
+                .then(data => {
+                  data.forEach(slot => {
+                    var option = document.createElement('option');
+                    option.value = slot.time;
+                    option.textContent = slot.time;
+
+                    // disable option if it is already booked
+                    if (!slot.isTimeSlotAvailable) {
+                      option.disabled = true;
+                    }
+
+                    timeSlotSelect.appendChild(option);
+                  });
+                })
+                .catch(error => console.error('Error:', error));
+            }
+          }
+        </script>
+  </body>
+
+</html>
