@@ -1,7 +1,3 @@
-
-
----
-
 # 🚗 Driving Test Management System
 
 A **full-stack web application** for managing driving test appointments, users, and roles.
