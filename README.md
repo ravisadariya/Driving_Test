@@ -1,62 +1,37 @@
 # 🚗 Driving Test Management System
 
-A **full-stack web application** for managing driving test appointments, users, and roles.
-Built with **Node.js, Express, and MongoDB**, it provides secure authentication, role-based dashboards, and a responsive frontend for learners, examiners, and administrators.
+## 📌 Overview
+Driving Test Management System is a full-stack web application designed to manage driving test appointments, users, and role-based workflows. It enables learners, examiners, and administrators to interact through secure authentication and structured dashboards.
+
+---
+
+## 🛠 Tech Stack
+- Node.js  
+- Express.js  
+- MongoDB  
+- JWT Authentication  
+- HTML5, CSS3, Bootstrap, JavaScript  
+- Netlify / Local Deployment (Frontend)  
 
 ---
 
 ## ✨ Features
-
-* 👤 **User Authentication** – Secure signup & login with encrypted passwords.
-* 🔑 **Role-Based Access** – Separate dashboards for **Admin**, **Examiner**, and **User**.
-* 📅 **Appointment Scheduling** – Book, view, update, and cancel driving test slots.
-* 📊 **Admin Controls** – Manage users, appointments, and examiner assignments.
-* 📱 **Responsive Frontend** – Clean UI with HTML, CSS, Bootstrap, and JavaScript.
+- 👤 Secure user authentication with encrypted passwords  
+- 🔑 Role-based access control (Admin, Examiner, User)  
+- 📅 Appointment scheduling and management system  
+- 📊 Admin dashboard for managing users and test slots  
+- 📱 Responsive UI with clean layout using Bootstrap  
+- 🔒 Protected routes using middleware and JWT  
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Live Demo
+(Not deployed)
 
-* **Backend:** Node.js, Express.js
-* **Database:** MongoDB
-* **Authentication:** JWT, custom middleware, encryption
-* **Frontend:** HTML5, CSS3, Bootstrap, JavaScript
-* **Version Control:** Git & GitHub
-  
 ---
 
-## ⚙️ Getting Started
-
-### 1️⃣ Clone the repository
-
+## ⚙️ Installation & Setup
 ```bash
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
-```
-
-### 2️⃣ Install dependencies
-
-```bash
+git clone https://github.com/ravisadariya/Driving_Test.git
+cd Driving_Test
 npm install
-```
-
-### 3️⃣ Configure Environment
-
-Create a `.env` file in the root directory with:
-
-```env
-MONGO_URI=your-mongodb-uri
-PORT=5000
-JWT_SECRET=your-secret-key
-```
-
-### 4️⃣ Run the server
-
-```bash
-npm start
-```
-
-Your app will be live at: `http://localhost:5000` 🎉
-
----
-
